@@ -1,0 +1,24 @@
+server:
+  port: 8080
+  context-path: /demo
+spring:
+  application:
+    name: demo
+  profiles:
+    active: dev
+
+swagger:
+  enabled: true
+  title: "demo系统文档"
+  description: "demo系统文档"
+  version: 1.0.0
+  license: "Apache License, Version 2.0"
+  licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0.html"
+  termsOfServiceUrl: "http://localhost:8080/swagger-ui.html"
+  contact:
+    name: shaw
+    url: www.itshaw.cn
+    email: 13416147137@163.com
+  base-package: cn.itshaw
+  base-path: /**
+  exclude-path: /error, /ops/**

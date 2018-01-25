@@ -1,0 +1,68 @@
+spring:
+  jpa:
+    show-sql: true
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/test
+      username: admin
+      password: admin
+      driver-class-name: com.mysql.jdbc.Driver
+
+      initial-size: 5
+      max-active: 20
+      min-idle: 3
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 50
+      max-open-prepared-statements: 5
+      validation-query: SELECT 1 FROM DUAL
+      validation-query-timeout: 6000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      max-evictable-idle-time-millis: 600000
+      filters: stat, wall, slf4j
+      url-mappings: /druid/*
+
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: admin
+        login-password: admin
+        allow: ''
+        deny: ''
+  redis:
+    cluster:
+      nodes:
+        - localhost:7001
+        - localhost:7002
+        - localhost:7003
+      timeout: 6000
+      max-redirects: 5
+      max-active: 200
+      max-idle: 30
+      max-wait: 500
+      min-idle: 10
+      default-expiration: 60
+      default-cache-prefix: 'demo-'
+
+logging:
+  level:
+     root: debug
+     org:
+       springframework: info
+       hibernate: info
+       eclipse: info
+       apache: info
+  file: "D://tmp/application.log"
+  pattern:
+    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %clr{%p}{yellow} %clr{%c.%method-%L}{blue} %clr{%t}{faint} %msg %n"
+    file: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %c.%method-%L %t %msg %n"
